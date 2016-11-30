@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2b77c9019c4447482cb118b3253ebac" Name="Diagram1">
+        <EntityTypeShape EntityType="BasketballModel.Lineup" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.Player" Width="1.5" PointX="4.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.Position" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BasketballModel.Team" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players1" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players2" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players3" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players4" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players5" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players6" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players7" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Lineups_Players8" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Players_Positions" ManuallyRouted="false" />
+        <AssociationConnector Association="BasketballModel.FK_Players_Teams" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

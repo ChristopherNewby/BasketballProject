@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BasketballModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Lineups">
+          <Key>
+            <PropertyRef Name="LineupID" />
+          </Key>
+          <Property Name="LineupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Player1" Type="int" Nullable="false" />
+          <Property Name="Player2" Type="int" Nullable="false" />
+          <Property Name="Player3" Type="int" Nullable="false" />
+          <Property Name="Player4" Type="int" Nullable="false" />
+          <Property Name="Player5" Type="int" Nullable="false" />
+          <Property Name="Player6" Type="int" Nullable="false" />
+          <Property Name="Player7" Type="int" Nullable="false" />
+          <Property Name="Player8" Type="int" Nullable="false" />
+          <Property Name="Player9" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Team" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Positions">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NextGame" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Lineups_Players">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players1">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players2">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players3">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players4">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players5">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players6">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player7" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players7">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player8" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players8">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player9" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_Positions">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BasketballModelStoreContainer">
+          <EntitySet Name="Lineups" EntityType="Self.Lineups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Lineups_Players" Association="Self.FK_Lineups_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players1" Association="Self.FK_Lineups_Players1">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players2" Association="Self.FK_Lineups_Players2">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players3" Association="Self.FK_Lineups_Players3">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players4" Association="Self.FK_Lineups_Players4">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players5" Association="Self.FK_Lineups_Players5">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players6" Association="Self.FK_Lineups_Players6">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players7" Association="Self.FK_Lineups_Players7">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players8" Association="Self.FK_Lineups_Players8">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_Positions" Association="Self.FK_Players_Positions">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_Teams" Association="Self.FK_Players_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BasketballModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lineup">
+          <Key>
+            <PropertyRef Name="LineupID" />
+          </Key>
+          <Property Name="LineupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Player1" Type="Int32" Nullable="false" />
+          <Property Name="Player2" Type="Int32" Nullable="false" />
+          <Property Name="Player3" Type="Int32" Nullable="false" />
+          <Property Name="Player4" Type="Int32" Nullable="false" />
+          <Property Name="Player5" Type="Int32" Nullable="false" />
+          <Property Name="Player6" Type="Int32" Nullable="false" />
+          <Property Name="Player7" Type="Int32" Nullable="false" />
+          <Property Name="Player8" Type="Int32" Nullable="false" />
+          <Property Name="Player9" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Lineups_Players" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player10" Relationship="Self.FK_Lineups_Players1" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player11" Relationship="Self.FK_Lineups_Players2" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player12" Relationship="Self.FK_Lineups_Players3" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player13" Relationship="Self.FK_Lineups_Players4" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player14" Relationship="Self.FK_Lineups_Players5" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player15" Relationship="Self.FK_Lineups_Players6" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player16" Relationship="Self.FK_Lineups_Players7" FromRole="Lineups" ToRole="Players" />
+          <NavigationProperty Name="Player17" Relationship="Self.FK_Lineups_Players8" FromRole="Lineups" ToRole="Players" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Team" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lineups" Relationship="Self.FK_Lineups_Players" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups1" Relationship="Self.FK_Lineups_Players1" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups2" Relationship="Self.FK_Lineups_Players2" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups3" Relationship="Self.FK_Lineups_Players3" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups4" Relationship="Self.FK_Lineups_Players4" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups5" Relationship="Self.FK_Lineups_Players5" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups6" Relationship="Self.FK_Lineups_Players6" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups7" Relationship="Self.FK_Lineups_Players7" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Lineups8" Relationship="Self.FK_Lineups_Players8" FromRole="Players" ToRole="Lineups" />
+          <NavigationProperty Name="Position1" Relationship="Self.FK_Players_Positions" FromRole="Players" ToRole="Positions" />
+          <NavigationProperty Name="Team1" Relationship="Self.FK_Players_Teams" FromRole="Players" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Players" Relationship="Self.FK_Players_Positions" FromRole="Positions" ToRole="Players" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NextGame" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Players" Relationship="Self.FK_Players_Teams" FromRole="Teams" ToRole="Players" />
+        </EntityType>
+        <Association Name="FK_Lineups_Players">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players1">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players2">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players3">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players4">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players5">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players6">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player7" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players7">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player8" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lineups_Players8">
+          <End Role="Players" Type="Self.Player" Multiplicity="1" />
+          <End Role="Lineups" Type="Self.Lineup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Lineups">
+              <PropertyRef Name="Player9" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_Positions">
+          <End Role="Positions" Type="Self.Position" Multiplicity="1" />
+          <End Role="Players" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_Teams">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="Players" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BasketballEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lineups" EntityType="Self.Lineup" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="Positions" EntityType="Self.Position" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <AssociationSet Name="FK_Lineups_Players" Association="Self.FK_Lineups_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players1" Association="Self.FK_Lineups_Players1">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players2" Association="Self.FK_Lineups_Players2">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players3" Association="Self.FK_Lineups_Players3">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players4" Association="Self.FK_Lineups_Players4">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players5" Association="Self.FK_Lineups_Players5">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players6" Association="Self.FK_Lineups_Players6">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players7" Association="Self.FK_Lineups_Players7">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lineups_Players8" Association="Self.FK_Lineups_Players8">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Lineups" EntitySet="Lineups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_Positions" Association="Self.FK_Players_Positions">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_Teams" Association="Self.FK_Players_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BasketballModelStoreContainer" CdmEntityContainer="BasketballEntities">
+          <EntitySetMapping Name="Lineups">
+            <EntityTypeMapping TypeName="BasketballModel.Lineup">
+              <MappingFragment StoreEntitySet="Lineups">
+                <ScalarProperty Name="LineupID" ColumnName="LineupID" />
+                <ScalarProperty Name="Player1" ColumnName="Player1" />
+                <ScalarProperty Name="Player2" ColumnName="Player2" />
+                <ScalarProperty Name="Player3" ColumnName="Player3" />
+                <ScalarProperty Name="Player4" ColumnName="Player4" />
+                <ScalarProperty Name="Player5" ColumnName="Player5" />
+                <ScalarProperty Name="Player6" ColumnName="Player6" />
+                <ScalarProperty Name="Player7" ColumnName="Player7" />
+                <ScalarProperty Name="Player8" ColumnName="Player8" />
+                <ScalarProperty Name="Player9" ColumnName="Player9" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="BasketballModel.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="BasketballModel.Position">
+              <MappingFragment StoreEntitySet="Positions">
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Position1" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="BasketballModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="NextGame" ColumnName="NextGame" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

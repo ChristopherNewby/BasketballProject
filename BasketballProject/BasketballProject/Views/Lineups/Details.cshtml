@@ -1,0 +1,91 @@
+﻿@model BasketballProject.Lineup
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lineup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Player.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player10.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player10.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player11.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player11.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player12.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player12.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player13.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player13.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player14.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player14.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player15.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player15.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player16.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player16.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player17.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player17.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LineupID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
