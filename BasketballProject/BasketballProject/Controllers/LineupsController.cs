@@ -19,7 +19,7 @@ namespace BasketballProject.Controllers
         public ActionResult Index()
         {
             var lineups = db.Lineups.Include(l => l.Player).Include(l => l.Player10).Include(l => l.Player11).Include(l => l.Player12).Include(l => l.Player13).Include(l => l.Player14).Include(l => l.Player15).Include(l => l.Player16).Include(l => l.Player17);
-            return View(lineups.ToList()); 
+            return View(lineups.ToList());
         }
 
         // GET: Lineups/Details/5
@@ -40,27 +40,10 @@ namespace BasketballProject.Controllers
         // GET: Lineups/Create
         public ActionResult Create()
         {
+            
             LineupSelectionViewModel Options = new LineupSelectionViewModel();
 
-            Options.PointGuards = (from a in db.Players
-                                   where a.Position == 1
-                                   select a).ToList();
-
-            Options.ShootingGuards = (from b in db.Players
-                                  where b.Position == 2
-                                  select b).ToList();
-
-            Options.SmallForwards = (from b in db.Players
-                                      where b.Position == 3
-                                      select b).ToList();
-
-            Options.PowerFowards = (from b in db.Players
-                                      where b.Position == 4
-                                      select b).ToList();
-
-            Options.Centers = (from b in db.Players
-                                      where b.Position == 5
-                                      select b).ToList();
+            Utils.Query(ref Options);
 
             return View(Options);
 
@@ -175,5 +158,7 @@ namespace BasketballProject.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
+

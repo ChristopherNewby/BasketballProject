@@ -1,0 +1,80 @@
+﻿@model BasketballProject.Models.LineupGeneratorModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Player1.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player2.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player3.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player4.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player5.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player6.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player7.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player8.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player9.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(model => Model.Player1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player2.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player3.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player4.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player5.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player6.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player7.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player8.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Player9.Name)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LineupID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LineupID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LineupID })
+            </td>*@
+        </tr>
+    
+
+</table>
