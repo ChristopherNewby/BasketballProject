@@ -12,6 +12,7 @@ namespace BasketballProject.Models
         public static void FixTeam(ref LineupGeneratorModel a)
         {
             var PlayerChange = 0;
+            BasketballEntities db = new BasketballEntities();
 
             List<Player> newLu = new List<Player>();
             newLu.Add(a.Player1);
@@ -27,9 +28,12 @@ namespace BasketballProject.Models
             var LuTotal = (a.Player1.Price + a.Player2.Price + a.Player3.Price + a.Player4.Price + a.Player5.Price
                 + a.Player6.Price + a.Player7.Price + a.Player8.Price + a.Player9.Price);
 
+            List<Player> PointGuards = new List<Player>();
+            PointGuards = (from x in db.Players
+                           where x.Position == 1
+                           select x).ToList();
 
-
-            while (LuTotal > 60000) 
+            while (LuTotal > 60000)
             {
                 var HP = newLu.OrderByDescending(item => item.Price).First();
 
@@ -37,7 +41,7 @@ namespace BasketballProject.Models
                 {
                     case 1:
                         {
-                            PlayerChange = SwitchPg(ref HP);
+                            PlayerChange = SwitchPg(ref HP, ref PointGuards);
                             if (a.Player1.PlayerId == PlayerChange)
                             {
                                 var index = newLu.FindIndex(x => x.PlayerId == PlayerChange);
@@ -52,7 +56,7 @@ namespace BasketballProject.Models
                                 newLu.Insert(index, HP);
                                 a.Player2 = HP;
                             }
-                            
+
                             break;
                         }
                     case 2:
@@ -129,7 +133,7 @@ namespace BasketballProject.Models
                 LuTotal = (a.Player1.Price + a.Player2.Price + a.Player3.Price + a.Player4.Price + a.Player5.Price
                 + a.Player6.Price + a.Player7.Price + a.Player8.Price + a.Player9.Price);
             }
-          
+
         }
 
         public static void Query(ref LineupSelectionViewModel c)
@@ -139,41 +143,41 @@ namespace BasketballProject.Models
             c = new LineupSelectionViewModel();
 
             c.PointGuards = (from a in db.Players
-                                   where a.Position == 1
-                                   select a).ToList();
-
-            c.ShootingGuards = (from b in db.Players
-                                      where b.Position == 2
-                                      select b).ToList();
-
-            c.SmallForwards = (from b in db.Players
-                                     where b.Position == 3
-                                     select b).ToList();
-
-            c.PowerFowards = (from b in db.Players
-                                    where b.Position == 4
-                                    select b).ToList();
-
-            c.Centers = (from b in db.Players
-                               where b.Position == 5
-                               select b).ToList();
-        }
-
-        public static int SwitchPg(ref Player d)
-        {
-            BasketballEntities db = new BasketballEntities();
-
-            var PlayerChange = d.PlayerId;
-
-            List<Player> PointGuards = new List<Player>();
-
-            PointGuards = (from a in db.Players
                              where a.Position == 1
                              select a).ToList();
 
+            c.ShootingGuards = (from b in db.Players
+                                where b.Position == 2
+                                select b).ToList();
+
+            c.SmallForwards = (from b in db.Players
+                               where b.Position == 3
+                               select b).ToList();
+
+            c.PowerFowards = (from b in db.Players
+                              where b.Position == 4
+                              select b).ToList();
+
+            c.Centers = (from b in db.Players
+                         where b.Position == 5
+                         select b).ToList();
+        }
+
+        public static int SwitchPg(ref Player d, ref List<Player>PointGuards)
+        {
+            //BasketballEntities db = new BasketballEntities();
+
+            var PlayerChange = d.PlayerId;
+
+            //List<Player> PointGuards = new List<Player>();
+
+            //PointGuards = (from a in db.Players
+            //                 where a.Position == 1
+            //                 select a).ToList();
+
             PointGuards = PointGuards.OrderByDescending(item => item.Price).ToList();
 
-            foreach (var Player in PointGuards)  
+            foreach (var Player in PointGuards)
             {
                 if (Player.PlayerId == d.PlayerId)
                 {
@@ -186,7 +190,7 @@ namespace BasketballProject.Models
 
             d = PointGuards.OrderByDescending(item => item.PlayerId).First();
 
-            return PlayerChange;               
+            return PlayerChange;
         }
 
         public static int SwitchSg(ref Player d)
@@ -198,8 +202,8 @@ namespace BasketballProject.Models
             List<Player> ShootingGuards = new List<Player>();
 
             ShootingGuards = (from a in db.Players
-                           where a.Position == 2
-                           select a).ToList();
+                              where a.Position == 2
+                              select a).ToList();
 
             ShootingGuards = ShootingGuards.OrderByDescending(item => item.Price).ToList();
 
@@ -228,8 +232,8 @@ namespace BasketballProject.Models
             List<Player> SmallForwards = new List<Player>();
 
             SmallForwards = (from a in db.Players
-                              where a.Position == 3
-                              select a).ToList();
+                             where a.Position == 3
+                             select a).ToList();
 
             SmallForwards = SmallForwards.OrderByDescending(item => item.Price).ToList();
 
@@ -288,8 +292,8 @@ namespace BasketballProject.Models
             List<Player> Centers = new List<Player>();
 
             Centers = (from a in db.Players
-                             where a.Position == 5
-                             select a).ToList();
+                       where a.Position == 5
+                       select a).ToList();
 
             Centers = Centers.OrderByDescending(item => item.Price).ToList();
 
@@ -309,5 +313,5 @@ namespace BasketballProject.Models
             return PlayerChange;
         }
     }
-    
+
 }
