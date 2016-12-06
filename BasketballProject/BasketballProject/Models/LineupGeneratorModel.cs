@@ -16,5 +16,6 @@ namespace BasketballProject.Models
         public Player Player7 { get; set; }
         public Player Player8 { get; set; }
         public Player Player9 { get; set; }
+     
     }
 }
