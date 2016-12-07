@@ -16,6 +16,15 @@ namespace BasketballProject.Models
         public Player Player7 { get; set; }
         public Player Player8 { get; set; }
         public Player Player9 { get; set; }
-     
+
+        public IEnumerable<Player> PointGuards;
+        public IEnumerable<Player> ShootingGuards;
+        public IEnumerable<Player> SmallForwards;
+        public IEnumerable<Player> PowerFowards;
+        public IEnumerable<Player> Centers;
+
+        public IEnumerable<Player> Guards;
+        public IEnumerable<Player> Forwards;
+
     }
 }

@@ -41,7 +41,7 @@ namespace BasketballProject.Controllers
         public ActionResult Create()
         {
             
-            LineupSelectionViewModel Options = new LineupSelectionViewModel();
+            LineupGeneratorModel Options = new LineupGeneratorModel();
 
             Utils.Query(ref Options);
 

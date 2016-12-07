@@ -32,6 +32,61 @@ namespace BasketballProject.Models
             PointGuards = (from x in db.Players
                            where x.Position == 1
                            select x).ToList();
+            foreach (Player P in newLu)
+            {
+                if (P.Position == 1 && FindPlayer(PointGuards,P) == true)
+                {
+                    PointGuards.RemoveAll(x => x.PlayerId == P.PlayerId);
+                }
+            }
+
+            List<Player> ShootingGuards = new List<Player>();
+            ShootingGuards = (from x in db.Players
+                              where x.Position == 2
+                              select x).ToList();
+            foreach (Player P in newLu)
+            {
+                if (P.Position == 2 && FindPlayer(ShootingGuards, P) == true)
+                {
+                    ShootingGuards.RemoveAll(x => x.PlayerId == P.PlayerId);
+                }
+            }
+
+            List<Player> SmallForwards = new List<Player>();
+            SmallForwards = (from x in db.Players
+                             where x.Position == 3
+                             select x).ToList();
+            foreach (Player P in newLu)
+            {
+                if (P.Position == 3 && FindPlayer(SmallForwards, P) == true)
+                {
+                    SmallForwards.RemoveAll(x => x.PlayerId == P.PlayerId);
+                }
+            }
+
+            List<Player> PowerForwards = new List<Player>();
+            PowerForwards = (from x in db.Players
+                             where x.Position == 4
+                             select x).ToList();
+            foreach (Player P in newLu)
+            {
+                if (P.Position == 4 && FindPlayer(PowerForwards, P) == true)
+                {
+                    PowerForwards.RemoveAll(x => x.PlayerId == P.PlayerId);
+                }
+            }
+
+            List<Player> Centers = new List<Player>();
+            Centers = (from x in db.Players
+                       where x.Position == 5
+                       select x).ToList();
+            foreach (Player P in newLu)
+            {
+                if (P.Position == 5 && FindPlayer(Centers, P) == true)
+                {
+                    Centers.RemoveAll(x => x.PlayerId == P.PlayerId);
+                }
+            }
 
             while (LuTotal > 60000)
             {
@@ -48,6 +103,9 @@ namespace BasketballProject.Models
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player1 = HP;
+
+                                var indexPg = PointGuards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                PointGuards.RemoveAt(indexPg);
                             }
                             else if (a.Player2.PlayerId == PlayerChange)
                             {
@@ -55,19 +113,25 @@ namespace BasketballProject.Models
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player2 = HP;
+
+                                var indexPg = PointGuards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                PointGuards.RemoveAt(indexPg);
                             }
 
                             break;
                         }
                     case 2:
                         {
-                            PlayerChange = SwitchSg(ref HP);
+                            PlayerChange = SwitchSg(ref HP, ref ShootingGuards);
                             if (a.Player3.PlayerId == PlayerChange)
                             {
                                 var index = newLu.FindIndex(x => x.PlayerId == PlayerChange);
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player3 = HP;
+
+                                var indexSg = ShootingGuards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                ShootingGuards.RemoveAt(indexSg);
                             }
                             else if (a.Player4.PlayerId == PlayerChange)
                             {
@@ -75,18 +139,24 @@ namespace BasketballProject.Models
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player4 = HP;
+
+                                var indexSg = ShootingGuards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                ShootingGuards.RemoveAt(indexSg);
                             }
                             break;
                         }
                     case 3:
                         {
-                            PlayerChange = SwitchSf(ref HP);
+                            PlayerChange = SwitchSf(ref HP, ref SmallForwards);
                             if (a.Player5.PlayerId == PlayerChange)
                             {
                                 var index = newLu.FindIndex(x => x.PlayerId == PlayerChange);
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player5 = HP;
+
+                                var indexSf = SmallForwards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                SmallForwards.RemoveAt(indexSf);
                             }
                             else if (a.Player6.PlayerId == PlayerChange)
                             {
@@ -94,18 +164,24 @@ namespace BasketballProject.Models
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player6 = HP;
+
+                                var indexSf = SmallForwards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                SmallForwards.RemoveAt(indexSf);
                             }
                             break;
                         }
                     case 4:
                         {
-                            PlayerChange = SwitchPf(ref HP);
+                            PlayerChange = SwitchPf(ref HP, ref PowerForwards);
                             if (a.Player7.PlayerId == PlayerChange)
                             {
                                 var index = newLu.FindIndex(x => x.PlayerId == PlayerChange);
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player7 = HP;
+
+                                var indexPf = PowerForwards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                PowerForwards.RemoveAt(indexPf);
                             }
                             else if (a.Player8.PlayerId == PlayerChange)
                             {
@@ -113,18 +189,24 @@ namespace BasketballProject.Models
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player8 = HP;
+
+                                var indexPf = PowerForwards.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                PowerForwards.RemoveAt(indexPf);
                             }
                             break;
                         }
                     default:
                         {
-                            PlayerChange = SwitchC(ref HP);
+                            PlayerChange = SwitchC(ref HP, ref Centers);
                             if (a.Player9.PlayerId == PlayerChange)
                             {
                                 var index = newLu.FindIndex(x => x.PlayerId == PlayerChange);
                                 newLu.RemoveAt(index);
                                 newLu.Insert(index, HP);
                                 a.Player9 = HP;
+
+                                var indexC = Centers.FindIndex(x => x.PlayerId == HP.PlayerId);
+                                Centers.RemoveAt(indexC);
                             }
                             break;
                         }
@@ -136,11 +218,11 @@ namespace BasketballProject.Models
 
         }
 
-        public static void Query(ref LineupSelectionViewModel c)
+        public static void Query(ref LineupGeneratorModel c)
         {
             BasketballEntities db = new BasketballEntities();
 
-            c = new LineupSelectionViewModel();
+            c = new LineupGeneratorModel();
 
             c.PointGuards = (from a in db.Players
                              where a.Position == 1
@@ -165,17 +247,8 @@ namespace BasketballProject.Models
 
         public static int SwitchPg(ref Player d, ref List<Player>PointGuards)
         {
-            //BasketballEntities db = new BasketballEntities();
 
-            var PlayerChange = d.PlayerId;
-
-            //List<Player> PointGuards = new List<Player>();
-
-            //PointGuards = (from a in db.Players
-            //                 where a.Position == 1
-            //                 select a).ToList();
-
-            PointGuards = PointGuards.OrderByDescending(item => item.Price).ToList();
+            var PlayerChange = d.PlayerId;           
 
             foreach (var Player in PointGuards)
             {
@@ -186,26 +259,14 @@ namespace BasketballProject.Models
             }
             PointGuards.RemoveAll(x => x.PlayerId == 999);
 
-            PointGuards = PointGuards.OrderByDescending(item => item.Price).ToList();
-
-            d = PointGuards.OrderByDescending(item => item.PlayerId).First();
+            d = PointGuards.OrderByDescending(item => item.Price).First();
 
             return PlayerChange;
         }
 
-        public static int SwitchSg(ref Player d)
-        {
-            BasketballEntities db = new BasketballEntities();
-
-            var PlayerChange = d.PlayerId;
-
-            List<Player> ShootingGuards = new List<Player>();
-
-            ShootingGuards = (from a in db.Players
-                              where a.Position == 2
-                              select a).ToList();
-
-            ShootingGuards = ShootingGuards.OrderByDescending(item => item.Price).ToList();
+        public static int SwitchSg(ref Player d, ref List<Player> ShootingGuards)
+        {           
+            var PlayerChange = d.PlayerId;           
 
             foreach (var Player in ShootingGuards)
             {
@@ -216,27 +277,16 @@ namespace BasketballProject.Models
             }
             ShootingGuards.RemoveAll(x => x.PlayerId == 999);
 
-            ShootingGuards = ShootingGuards.OrderByDescending(item => item.Price).ToList();
-
-            d = ShootingGuards.OrderByDescending(item => item.PlayerId).First();
+            d = ShootingGuards.OrderByDescending(item => item.Price).First();
 
             return PlayerChange;
         }
 
-        public static int SwitchSf(ref Player d)
+        public static int SwitchSf(ref Player d, ref List<Player> SmallForwards)
         {
-            BasketballEntities db = new BasketballEntities();
 
             var PlayerChange = d.PlayerId;
-
-            List<Player> SmallForwards = new List<Player>();
-
-            SmallForwards = (from a in db.Players
-                             where a.Position == 3
-                             select a).ToList();
-
-            SmallForwards = SmallForwards.OrderByDescending(item => item.Price).ToList();
-
+           
             foreach (var Player in SmallForwards)
             {
                 if (Player.PlayerId == d.PlayerId)
@@ -246,26 +296,15 @@ namespace BasketballProject.Models
             }
             SmallForwards.RemoveAll(x => x.PlayerId == 999);
 
-            SmallForwards = SmallForwards.OrderByDescending(item => item.Price).ToList();
-
-            d = SmallForwards.OrderByDescending(item => item.PlayerId).First();
+            d = SmallForwards.OrderByDescending(item => item.Price).First();
 
             return PlayerChange;
         }
 
-        public static int SwitchPf(ref Player d)
+        public static int SwitchPf(ref Player d, ref List<Player> PowerForwards)
         {
-            BasketballEntities db = new BasketballEntities();
 
-            var PlayerChange = d.PlayerId;
-
-            List<Player> PowerForwards = new List<Player>();
-
-            PowerForwards = (from a in db.Players
-                             where a.Position == 4
-                             select a).ToList();
-
-            PowerForwards = PowerForwards.OrderByDescending(item => item.Price).ToList();
+            var PlayerChange = d.PlayerId;         
 
             foreach (var Player in PowerForwards)
             {
@@ -276,26 +315,14 @@ namespace BasketballProject.Models
             }
             PowerForwards.RemoveAll(x => x.PlayerId == 999);
 
-            PowerForwards = PowerForwards.OrderByDescending(item => item.Price).ToList();
-
-            d = PowerForwards.OrderByDescending(item => item.PlayerId).First();
+            d = PowerForwards.OrderByDescending(item => item.Price).First();
 
             return PlayerChange;
         }
 
-        public static int SwitchC(ref Player d)
+        public static int SwitchC(ref Player d, ref List<Player> Centers)
         {
-            BasketballEntities db = new BasketballEntities();
-
-            var PlayerChange = d.PlayerId;
-
-            List<Player> Centers = new List<Player>();
-
-            Centers = (from a in db.Players
-                       where a.Position == 5
-                       select a).ToList();
-
-            Centers = Centers.OrderByDescending(item => item.Price).ToList();
+            var PlayerChange = d.PlayerId;            
 
             foreach (var Player in Centers)
             {
@@ -305,12 +332,24 @@ namespace BasketballProject.Models
                 }
             }
             Centers.RemoveAll(x => x.PlayerId == 999);
-
-            Centers = Centers.OrderByDescending(item => item.Price).ToList();
-
-            d = Centers.OrderByDescending(item => item.PlayerId).First();
+                      
+            d = Centers.OrderByDescending(item => item.Price).First();
 
             return PlayerChange;
+        }
+
+        public static bool FindPlayer(List<Player> c,Player d)
+        {
+            var PChange = false;
+
+            foreach (Player x in c)
+            {
+                if (x.PlayerId == d.PlayerId)
+                {
+                    PChange = true;
+                }
+            }
+            return (PChange);
         }
     }
 
