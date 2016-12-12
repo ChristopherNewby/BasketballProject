@@ -13,7 +13,8 @@ namespace BasketballProject.Controllers
 
         // GET: LineupGenerator
         public ActionResult Index()
-        {
+        {                  
+
             LineupGeneratorModel Glineup = new LineupGeneratorModel();
 
             var PG1 = from a in db.Players

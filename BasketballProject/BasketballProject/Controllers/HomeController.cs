@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasketballProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,16 @@ namespace BasketballProject.Controllers
 {
     public class HomeController : Controller
     {
+        private BasketballEntities db = new BasketballEntities();
+
         public ActionResult Index()
         {
-            return View();
+
+            ImportPlayerViewModel BP = new ImportPlayerViewModel();
+
+            BP.ImPlayers = db.ImportPlayers.ToList();
+
+            return View(BP);
         }
 
         public ActionResult About()

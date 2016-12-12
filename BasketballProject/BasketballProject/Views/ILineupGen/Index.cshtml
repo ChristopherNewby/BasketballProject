@@ -1,0 +1,99 @@
+﻿@model BasketballProject.Models.ILineupGenModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Player1.First_Name)
+            @Html.DisplayNameFor(model => model.Player1.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player2.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player3.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player4.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player5.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player6.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player7.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player8.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        <th>
+            @Html.DisplayNameFor(model => model.Player9.First_Name)
+            @Html.DisplayNameFor(model => model.Player2.Last_Name)
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => Model.Player1.First_Name)
+            @Html.DisplayFor(model => Model.Player1.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player2.First_Name)
+            @Html.DisplayFor(model => Model.Player2.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player3.First_Name)
+            @Html.DisplayFor(model => Model.Player3.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player4.First_Name)
+            @Html.DisplayFor(model => Model.Player4.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player5.First_Name)
+            @Html.DisplayFor(model => Model.Player5.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player6.First_Name)
+            @Html.DisplayFor(model => Model.Player6.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player7.First_Name)
+            @Html.DisplayFor(model => Model.Player7.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player8.First_Name)
+            @Html.DisplayFor(model => Model.Player8.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.Player9.First_Name)
+            @Html.DisplayFor(model => Model.Player9.Last_Name)
+        </td>
+        @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LineupID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LineupID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LineupID })
+            </td>*@
+    </tr>
+
+
+</table>
+
+

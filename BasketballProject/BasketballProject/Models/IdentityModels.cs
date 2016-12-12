@@ -29,5 +29,7 @@ namespace BasketballProject.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BasketballProject.ImportPlayer> ImportPlayers { get; set; }
     }
 }

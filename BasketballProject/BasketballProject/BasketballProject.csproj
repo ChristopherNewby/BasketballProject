@@ -224,6 +224,8 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ILineupGenController.cs" />
+    <Compile Include="Controllers\ImportCSVController.cs" />
     <Compile Include="Controllers\LineupGeneratorController.cs" />
     <Compile Include="Controllers\LineupsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -231,11 +233,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ImportPlayer.cs">
+      <DependentUpon>BasketballDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lineup.cs">
       <DependentUpon>BasketballDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ILineupGenModel.cs" />
+    <Compile Include="Models\ImportPlayerViewModel.cs" />
+    <Compile Include="Models\IUtils.cs" />
     <Compile Include="Models\LineupSelectionViewModel.cs" />
     <Compile Include="Models\LineupGeneratorModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -339,9 +347,11 @@
     <Content Include="Views\Players\Edit.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
     <Content Include="Views\LineupGenerator\Index.cshtml" />
+    <Content Include="Views\ILineupGen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ImportCSV\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

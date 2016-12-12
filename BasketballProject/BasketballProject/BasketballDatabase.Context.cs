@@ -29,5 +29,6 @@ namespace BasketballProject
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<ImportPlayer> ImportPlayers { get; set; }
     }
 }

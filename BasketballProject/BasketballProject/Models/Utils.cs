@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -350,6 +351,35 @@ namespace BasketballProject.Models
                 }
             }
             return (PChange);
+        }
+        public static void AddToDb(List<ImportPlayer> a)
+        {
+            BasketballEntities db = new BasketballEntities();
+
+            foreach (ImportPlayer Ip in a)
+            {
+                db.ImportPlayers.Add(Ip);              
+            }
+            db.SaveChanges();
+        }
+
+        public static void ClearTable()
+        {
+            try
+            {
+                BasketballEntities db = new BasketballEntities();
+
+                var itemsToDelete = from ip in db.ImportPlayers select ip;
+                db.ImportPlayers.RemoveRange(itemsToDelete);
+                db.SaveChanges();
+            }
+            catch (DataException e)
+            {
+                // Process exception and return.
+                Console.WriteLine("Exception of type {0} occurred.",
+                    e.GetType());
+            }
+
         }
     }
 

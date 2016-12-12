@@ -20,6 +20,7 @@
         <AssociationConnector Association="BasketballModel.FK_Lineups_Players8" ManuallyRouted="false" />
         <AssociationConnector Association="BasketballModel.FK_Players_Positions" ManuallyRouted="false" />
         <AssociationConnector Association="BasketballModel.FK_Players_Teams" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BasketballModel.ImportPlayer" Width="1.5" PointX="10" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
