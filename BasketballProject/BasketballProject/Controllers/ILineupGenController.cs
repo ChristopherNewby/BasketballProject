@@ -70,8 +70,10 @@ namespace BasketballProject.Controllers
 
             Glineup.Player9 = C.OrderByDescending(item => item.Salary).First();
 
-            IUtils.FixITeamS(ref Glineup);
+            //IUtils.FixITeamS(ref Glineup);
             //IUtils.FixITeamF(ref Glineup);
+           // IUtils.FixITeamSInj(ref Glineup);
+            IUtils.FixITeamSO(ref Glineup);
 
             return View(Glineup);
         }

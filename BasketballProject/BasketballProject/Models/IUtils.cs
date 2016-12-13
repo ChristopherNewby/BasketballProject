@@ -391,6 +391,342 @@ namespace BasketballProject.Models
 
         //}
 
+        public static void FixITeamSInj(ref ILineupGenModel a)
+        {
+            string PlayerChange;
+            BasketballEntities db = new BasketballEntities();
+
+            List<ImportPlayer> newLu = new List<ImportPlayer>();
+            newLu.Add(a.Player1);
+            newLu.Add(a.Player2);
+            newLu.Add(a.Player3);
+            newLu.Add(a.Player4);
+            newLu.Add(a.Player5);
+            newLu.Add(a.Player6);
+            newLu.Add(a.Player7);
+            newLu.Add(a.Player8);
+            newLu.Add(a.Player9);
+
+            var LuTotal = TotalSalary(newLu);
+
+            List<ImportPlayer> PointGuards = new List<ImportPlayer>();
+            FillListInj(ref PointGuards, "PG");
+            RemoveFromList(newLu, ref PointGuards, "PG");
+
+            List<ImportPlayer> ShootingGuards = new List<ImportPlayer>();
+            FillListInj(ref ShootingGuards, "SG");
+            RemoveFromList(newLu, ref ShootingGuards, "SG");
+
+            List<ImportPlayer> SmallForwards = new List<ImportPlayer>();
+            FillListInj(ref SmallForwards, "SF");
+            RemoveFromList(newLu, ref SmallForwards, "SF");
+
+            List<ImportPlayer> PowerForwards = new List<ImportPlayer>();
+            FillListInj(ref PowerForwards, "PF");
+            RemoveFromList(newLu, ref PowerForwards, "PF");
+
+            List<ImportPlayer> Centers = new List<ImportPlayer>();
+            FillListInj(ref Centers, "C");
+            RemoveFromList(newLu, ref Centers, "C");
+
+
+            while (LuTotal > 60000)
+            {
+                var HP = newLu.OrderByDescending(item => item.Salary).First();
+
+                switch (HP.Position)
+                {
+                    case "PG":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref PointGuards);
+                            if (a.Player1.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player1 = HP;
+
+                                var indexPg = PointGuards.FindIndex(x => x.Id == HP.Id);
+                                PointGuards.RemoveAt(indexPg);
+                            }
+                            else if (a.Player2.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player2 = HP;
+
+                                var indexPg = PointGuards.FindIndex(x => x.Id == HP.Id);
+                                PointGuards.RemoveAt(indexPg);
+                            }
+
+                            break;
+                        }
+                    case "SG":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref ShootingGuards);
+                            if (a.Player3.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player3 = HP;
+
+                                var indexSg = ShootingGuards.FindIndex(x => x.Id == HP.Id);
+                                ShootingGuards.RemoveAt(indexSg);
+                            }
+                            else if (a.Player4.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player4 = HP;
+
+                                var indexSg = ShootingGuards.FindIndex(x => x.Id == HP.Id);
+                                ShootingGuards.RemoveAt(indexSg);
+                            }
+                            break;
+                        }
+                    case "SF":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref SmallForwards);
+                            if (a.Player5.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player5 = HP;
+
+                                var indexSf = SmallForwards.FindIndex(x => x.Id == HP.Id);
+                                SmallForwards.RemoveAt(indexSf);
+                            }
+                            else if (a.Player6.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player6 = HP;
+
+                                var indexSf = SmallForwards.FindIndex(x => x.Id == HP.Id);
+                                SmallForwards.RemoveAt(indexSf);
+                            }
+                            break;
+                        }
+                    case "PF":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref PowerForwards);
+                            if (a.Player7.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player7 = HP;
+
+                                var indexPf = PowerForwards.FindIndex(x => x.Id == HP.Id);
+                                PowerForwards.RemoveAt(indexPf);
+                            }
+                            else if (a.Player8.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player8 = HP;
+
+                                var indexPf = PowerForwards.FindIndex(x => x.Id == HP.Id);
+                                PowerForwards.RemoveAt(indexPf);
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref Centers);
+                            if (a.Player9.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player9 = HP;
+
+                                var indexC = Centers.FindIndex(x => x.Id == HP.Id);
+                                Centers.RemoveAt(indexC);
+                            }
+                            break;
+                        }
+                }
+
+                LuTotal = TotalSalary(newLu);
+            }
+
+        }
+
+        public static void FixITeamSO(ref ILineupGenModel a)
+        {
+            string PlayerChange;
+            BasketballEntities db = new BasketballEntities();
+
+            List<ImportPlayer> newLu = new List<ImportPlayer>();
+            newLu.Add(a.Player1);
+            newLu.Add(a.Player2);
+            newLu.Add(a.Player3);
+            newLu.Add(a.Player4);
+            newLu.Add(a.Player5);
+            newLu.Add(a.Player6);
+            newLu.Add(a.Player7);
+            newLu.Add(a.Player8);
+            newLu.Add(a.Player9);
+
+            var LuTotal = TotalSalary(newLu);
+
+            List<ImportPlayer> PointGuards = new List<ImportPlayer>();
+            FillListO(ref PointGuards, "PG");
+            RemoveFromList(newLu, ref PointGuards, "PG");
+
+            List<ImportPlayer> ShootingGuards = new List<ImportPlayer>();
+            FillListO(ref ShootingGuards, "SG");
+            RemoveFromList(newLu, ref ShootingGuards, "SG");
+
+            List<ImportPlayer> SmallForwards = new List<ImportPlayer>();
+            FillListO(ref SmallForwards, "SF");
+            RemoveFromList(newLu, ref SmallForwards, "SF");
+
+            List<ImportPlayer> PowerForwards = new List<ImportPlayer>();
+            FillListO(ref PowerForwards, "PF");
+            RemoveFromList(newLu, ref PowerForwards, "PF");
+
+            List<ImportPlayer> Centers = new List<ImportPlayer>();
+            FillListO(ref Centers, "C");
+            RemoveFromList(newLu, ref Centers, "C");
+
+
+            while (LuTotal > 60000)
+            {
+                var HP = newLu.OrderByDescending(item => item.Salary).First();
+
+                switch (HP.Position)
+                {
+                    case "PG":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref PointGuards);
+                            if (a.Player1.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player1 = HP;
+
+                                var indexPg = PointGuards.FindIndex(x => x.Id == HP.Id);
+                                PointGuards.RemoveAt(indexPg);
+                            }
+                            else if (a.Player2.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player2 = HP;
+
+                                var indexPg = PointGuards.FindIndex(x => x.Id == HP.Id);
+                                PointGuards.RemoveAt(indexPg);
+                            }
+
+                            break;
+                        }
+                    case "SG":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref ShootingGuards);
+                            if (a.Player3.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player3 = HP;
+
+                                var indexSg = ShootingGuards.FindIndex(x => x.Id == HP.Id);
+                                ShootingGuards.RemoveAt(indexSg);
+                            }
+                            else if (a.Player4.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player4 = HP;
+
+                                var indexSg = ShootingGuards.FindIndex(x => x.Id == HP.Id);
+                                ShootingGuards.RemoveAt(indexSg);
+                            }
+                            break;
+                        }
+                    case "SF":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref SmallForwards);
+                            if (a.Player5.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player5 = HP;
+
+                                var indexSf = SmallForwards.FindIndex(x => x.Id == HP.Id);
+                                SmallForwards.RemoveAt(indexSf);
+                            }
+                            else if (a.Player6.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player6 = HP;
+
+                                var indexSf = SmallForwards.FindIndex(x => x.Id == HP.Id);
+                                SmallForwards.RemoveAt(indexSf);
+                            }
+                            break;
+                        }
+                    case "PF":
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref PowerForwards);
+                            if (a.Player7.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player7 = HP;
+
+                                var indexPf = PowerForwards.FindIndex(x => x.Id == HP.Id);
+                                PowerForwards.RemoveAt(indexPf);
+                            }
+                            else if (a.Player8.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player8 = HP;
+
+                                var indexPf = PowerForwards.FindIndex(x => x.Id == HP.Id);
+                                PowerForwards.RemoveAt(indexPf);
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            PlayerChange = SwitchPlayer(ref HP, ref Centers);
+                            if (a.Player9.Id == PlayerChange)
+                            {
+                                var index = newLu.FindIndex(x => x.Id == PlayerChange);
+                                newLu.RemoveAt(index);
+                                newLu.Insert(index, HP);
+                                a.Player9 = HP;
+
+                                var indexC = Centers.FindIndex(x => x.Id == HP.Id);
+                                Centers.RemoveAt(indexC);
+                            }
+                            break;
+                        }
+                }
+
+                LuTotal = TotalSalary(newLu);
+            }
+
+        }
+
         public static string SwitchPlayer(ref ImportPlayer PToChange, ref List<ImportPlayer> ListToSearch)
         {
             var PlayerChange = PToChange.Id;
@@ -462,6 +798,46 @@ namespace BasketballProject.Models
             return (PosToFill);
         }
 
+        public static List<ImportPlayer> FillListInj(ref List<ImportPlayer> PosToFill, string Position)
+        {
+            BasketballEntities db = new BasketballEntities();
+
+            PosToFill = (from x in db.ImportPlayers
+                         where x.Position == Position
+                         select x).ToList();
+
+            foreach (ImportPlayer InjP in PosToFill)
+            {
+                if (InjP.Injury_Indicator != "")
+                {
+                    InjP.Id = "Injured";
+                }
+            }
+
+            PosToFill.RemoveAll(x => x.Id == "Injured");
+
+            return (PosToFill);
+        }
+        public static List<ImportPlayer> FillListO(ref List<ImportPlayer> PosToFill, string Position)
+        {
+            BasketballEntities db = new BasketballEntities();
+
+            PosToFill = (from x in db.ImportPlayers
+                         where x.Position == Position
+                         select x).ToList();
+
+            foreach (ImportPlayer InjP in PosToFill)
+            {
+                if (InjP.Injury_Details == "O")
+                {
+                    InjP.Id = "Injured";
+                }
+            }
+
+            PosToFill.RemoveAll(x => x.Id == "Injured");
+
+            return (PosToFill);
+        }
         public static void RemoveFromList(List<ImportPlayer> LU, ref List<ImportPlayer> Pos, string Position)
         {
             foreach (ImportPlayer P in LU)

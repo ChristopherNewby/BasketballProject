@@ -19,7 +19,7 @@ namespace BasketballProject.Controllers
         {
             Utils.ClearTable();
 
-            string fileName = "FanDuel-NBA-2016-12-12-17268-players-list.csv";
+            string fileName = "FanDuel-NBA-2016-12-13-17300-players-list.csv";
 
             List<ImportPlayer> ImPlayers = new List<ImportPlayer>();
 

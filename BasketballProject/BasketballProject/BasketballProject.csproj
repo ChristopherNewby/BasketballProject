@@ -247,6 +247,7 @@
     <Compile Include="Models\LineupSelectionViewModel.cs" />
     <Compile Include="Models\LineupGeneratorModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PartialImportPlayer.cs" />
     <Compile Include="Models\PartialPlayer.cs" />
     <Compile Include="Models\Utils.cs" />
     <Compile Include="Player.cs">
