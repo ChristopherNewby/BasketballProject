@@ -21,6 +21,24 @@ namespace BasketballProject.Controllers
             return View(BP);
         }
 
+        public ActionResult SelectPlayer(string id)
+        {
+            ImportPlayer p = (from a in db.ImportPlayers
+                              where a.Id == id
+                              select a).FirstOrDefault();
+            if (p.Played == "Locked")
+            {
+                p.Played = "";
+            }
+            else
+            {
+                p.Played = "Locked";
+            }
+            
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -3,7 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron" style="overflow:auto;height:350px;">
 
       <table class="table">
             <tr>
@@ -21,7 +21,9 @@
                     @Html.DisplayFor(modelitem => ip.Last_Name) &nbsp;
                     @Html.DisplayFor(modelitem => ip.Position) &nbsp;
                     @Html.DisplayFor(modelitem => ip.Team) &nbsp;
-                    @Html.DisplayFor(modelitem => ip.Salary)
+                    @Html.DisplayFor(modelitem => ip.Salary) &nbsp;
+                    @Html.DisplayFor(modelitem => ip.Played)                   
+                    @Html.ActionLink("Select", "SelectPlayer", new {id = ip.Id })
                 </td>               
             </tr>
 }
@@ -33,20 +35,27 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Generate a Lineup!</h2>
+        <h2>Generate a Lineup based on Salary!</h2>
         <p>
             Generates a complete NBA Daily Fantasy Lineup.
         </p>
-        <p><a class="btn btn-default" href="http://localhost:55643/LineupGenerator/Index">Generate &raquo;</a></p>
+        <p><a class="btn btn-default" href="http://localhost:55643/ILineupGen/Index">Generate &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Generate a Lineup Without Questionable Players!</h2>
+        <p>Generates a complete NBA Daily Fantasy Lineup, excluding all players currently desginated questionable!</p>
+        <p><a class="btn btn-default" href="http://localhost:55643/ILineupGen/GenerateTeamWithoutInjuries">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Genrate a Lineup Without Players Designated out!</h2>
+        <p>Generates a complete NBA Daily Fantasy Lineup, excluding all players currently desginated out!</p>
+        <p><a class="btn btn-default" href="http://localhost:55643/ILineupGen/GenerateTeamWithoutOuts">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Genrate a Lineup Based on average Fantasy Points Per Game</h2>
+        <p>Generates a complete NBA Daily Fantasy Lineup! </p>
+        <p><a class="btn btn-default" href="http://localhost:55643/ILineupGen/GenerateTeamByFFPG">Learn more &raquo;</a></p>
     </div>
 </div>
+

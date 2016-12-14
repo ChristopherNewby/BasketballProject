@@ -38,7 +38,7 @@ namespace BasketballProject.Controllers
                     c2.Nickname = values[3].Replace("\\", "").Replace("\"", ""); ;
                     c2.Last_Name = values[4].Replace("\\", "").Replace("\"", ""); ;
                     c2.FPPG = values[5].Replace("\\", "").Replace("\"", ""); ;
-                    c2.Played = values[6].Replace("\\", "").Replace("\"", ""); ;
+                    c2.Played = "";
                     c2.Salary = values[7].Replace("\\", "").Replace("\"", ""); ;
                     c2.Game = values[8].Replace("\\", "").Replace("\"", ""); ;
                     c2.Team = values[9].Replace("\\", "").Replace("\"", ""); ;
@@ -56,7 +56,7 @@ namespace BasketballProject.Controllers
                 Console.WriteLine("File not found");
             }
 
-            return View();
+            return RedirectToAction("Index","Home");
         }
 
         
